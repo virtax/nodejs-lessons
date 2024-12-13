@@ -1,10 +1,10 @@
-import fs from 'fs';
+import fs from "fs";
 
 export default class PackageVersionReader {
   fileContent: string;
   version: string;
   constructor() {
-    fs.readFile('package.json', 'utf8', (err, data) => {
+    fs.readFile("package.json", "utf8", (err, data) => {
       if (err) {
         console.error(err);
         return;
@@ -12,11 +12,11 @@ export default class PackageVersionReader {
       this.fileContent = data;
       setImmediate( () => {
         this.readVersion();
-        console.log('setImmediate 1: current version', this.version);
+        console.log("setImmediate 1: current version", this.version);
       })
       setImmediate( () => {
         const nextMinorVer = this.getNextMinorVersion();
-        console.log('setImmediate 2: nextMinorVer', nextMinorVer);
+        console.log("setImmediate 2: nextMinorVer", nextMinorVer);
       });
     });
   }
@@ -27,7 +27,7 @@ export default class PackageVersionReader {
   }
 
   getNextMinorVersion() {
-    const [major, minor, patch] = this.version.split('.');
+    const [major, minor, patch] = this.version.split(".");
     return  `${major}.${parseInt(minor)+1}.${patch}`;
   }
 }

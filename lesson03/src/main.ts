@@ -24,8 +24,8 @@ log(config);
 new PackageVersionReader();
 logPackageName();
 
-eventsEmitter.emit('hi', 'lesson 3');
-eventsEmitter.emit('buy');
+eventsEmitter.emit("hi", "lesson 3");
+eventsEmitter.emit("buy");
 
 testStreams();
 

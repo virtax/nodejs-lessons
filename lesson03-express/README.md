@@ -20,7 +20,7 @@
 * app.ts  - main express application file
 
 ##How to start:
-  copy '.env.example' to '.env'
+  copy ".env.example" to ".env"
 
 ```
 npm install
@@ -28,4 +28,4 @@ npm run start:dev
 ```
 open http://localhost:3000/
 
-open http://localhost:3000/api/users - users CRUD API (without 'UD')
+open http://localhost:3000/api/users - users CRUD API (without "UD")

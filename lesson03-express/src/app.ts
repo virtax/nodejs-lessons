@@ -2,14 +2,14 @@ import config from "config";
 import "dotenv/config";
 import express, { Request, Response, NextFunction } from "express";
 import httpLogger from "./middleware/httpLogger";
-import usersRouter from './routes/users';
+import usersRouter from "./routes/users";
 
 import logger from "./utils/logger"
 const { log, warn, error } = logger("app");
 
 const app = express();
-const PORT = config.get('app.port');
-const HOSTNAME = config.get('app.hostname');
+const PORT = config.get("app.port");
+const HOSTNAME = config.get("app.hostname");
 
 // Middleware for JSON parsing
 app.use(express.json());
@@ -36,11 +36,11 @@ app.get("/", (req: Request, res: Response) => {
 });
 
 // User Routes
-app.use('/api/users', usersRouter);
+app.use("/api/users", usersRouter);
 
 // Global error handler
 app.use((err, req: Request, res: Response, next: NextFunction) => {
-  error('Error:', err.message);
+  error("Error:", err.message);
   res.status(500).json({ someinfo: "info", error: err.message });
 });
 

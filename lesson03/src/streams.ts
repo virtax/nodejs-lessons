@@ -1,5 +1,5 @@
-import { createReadStream, createWriteStream } from 'fs';
-import { createGzip } from 'zlib';
+import { createReadStream, createWriteStream } from "fs";
+import { createGzip } from "zlib";
 
 
 export default function testStreams() {
@@ -10,22 +10,22 @@ export default function testStreams() {
   // const writeStream = createWriteStream("./data/text_copy.txt");
 
   // // Handle reading chunks of data
-  // readStream.on('data', (chunk) => {
-  //   console.log('chunk.length', chunk.length);
+  // readStream.on("data", (chunk) => {
+  //   console.log("chunk.length", chunk.length);
   //   console.log(chunk.toString());
   //   writeStream.write(chunk);
   // });
 
   // // Handle stream closure
-  // readStream.on('close', () => {
-  //   console.log('Readable stream closed.');
+  // readStream.on("close", () => {
+  //   console.log("Readable stream closed.");
   //   writeStream.end();
   // });
 
 
   // Compression and pipe example
-  const readStream2 = createReadStream('./data/text.txt');
-  const writeStream2 = createWriteStream('./data/text.zip');
+  const readStream2 = createReadStream("./data/text.txt");
+  const writeStream2 = createWriteStream("./data/text.zip");
   const gzip = createGzip();
 
   // Pipe data through gzip and into the output file
