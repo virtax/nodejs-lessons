@@ -1,0 +1,56 @@
+{
+  "configurations": [
+    {
+      "name": "debug lesson03",
+      "type": "node",
+      "request": "launch",
+      // Debug current file in VSCode
+      "program": "${workspaceFolder}/lesson03/src/main.ts",
+      /*
+       * Path to tsx binary
+       * Assuming locally installed
+       */
+      "runtimeExecutable": "tsx",
+      "cwd": "${workspaceFolder}/lesson03",
+      /*
+       * Open terminal when debugging starts (Optional)
+       * Useful to see console.logs
+       */
+      "console": "integratedTerminal",
+      "internalConsoleOptions": "neverOpen",
+      // Files to exclude from debugger (e.g. call stack)
+      "skipFiles": [
+        // Node.js internal core modules
+        "<node_internals>/**",
+        // Ignore all dependencies (optional)
+        "${workspaceFolder}/lesson03/node_modules/**",
+      ]
+    },
+    {
+      "name": "debug lesson03-express",
+      "type": "node",
+      "request": "launch",
+      // Debug current file in VSCode
+      "program": "${workspaceFolder}/lesson03-express/src/app.ts",
+      /*
+       * Path to tsx binary
+       * Assuming locally installed
+       */
+      "runtimeExecutable": "tsx",
+      "cwd": "${workspaceFolder}/lesson03-express",
+      /*
+       * Open terminal when debugging starts (Optional)
+       * Useful to see console.logs
+       */
+      "console": "integratedTerminal",
+      "internalConsoleOptions": "neverOpen",
+      // Files to exclude from debugger (e.g. call stack)
+      "skipFiles": [
+        // Node.js internal core modules
+        "<node_internals>/**",
+        // Ignore all dependencies (optional)
+        // "${workspaceFolder}/lesson03-express/node_modules/**",
+      ]
+    }
+  ],
+}
