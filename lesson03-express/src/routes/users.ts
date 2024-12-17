@@ -1,4 +1,5 @@
 import { Router, Request, Response, NextFunction } from "express";
+import { BadRequestError, NotFoundError } from "../errors/httpErrors";
 
 interface User {
   id: number;
@@ -17,9 +18,12 @@ router.get("/", (req: Request, res: Response) => {
 router.get("/:id", (req: Request, res: Response, next: NextFunction) => {
   const user = users.find((u) => u.id === parseInt(req.params.id));
   if (!user) {
-    const err = new Error("User not found");
-    // res.status(404).json({ error: "User not found" });
-    return next(err);
+    // example of simple error handling
+    res.status(404).json({ error: "User not found" });
+    return;
+    // example of advanced error handling with error classes
+    // const err = new NotFoundError("User not found");
+    // return next(err);
   }
   res.json(user);
 });
@@ -28,9 +32,12 @@ router.get("/:id", (req: Request, res: Response, next: NextFunction) => {
 router.post("/", (req: Request, res: Response, next: NextFunction) => {
   const { name } = req.body;
   if (!name) {
-    const err = new Error("Name is required");
-    res.status(400);
+    // example of advanced error handling with error classes
+    const err = new BadRequestError("Name is required");
     return next(err);
+    // example of simple error handling
+    // res.status(400).json({ error: "Name is required" });
+    // return;
   }
   const newUser: User = { id: users.length + 1, name };
   users.push(newUser);

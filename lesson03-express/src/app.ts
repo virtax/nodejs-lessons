@@ -5,6 +5,7 @@ import httpLogger from "./middleware/httpLogger";
 import usersRouter from "./routes/users";
 
 import logger from "./utils/logger"
+import { HTTPError } from "./errors/httpErrors";
 const { log, warn, error } = logger("app");
 
 const app = express();
@@ -40,8 +41,12 @@ app.use("/api/users", usersRouter);
 
 // Global error handler
 app.use((err, req: Request, res: Response, next: NextFunction) => {
+  let statusCode = 500;
+  if (err instanceof HTTPError) {
+    statusCode = (err as HTTPError).statusCode;
+  }
   error("Error:", err.message);
-  res.status(500).json({ someinfo: "info", error: err.message });
+  res.status(statusCode).json({ someinfo: "Global error handler", error: err.message });
 });
 
 // Start the server
