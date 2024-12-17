@@ -51,6 +51,32 @@
         // Ignore all dependencies (optional)
         // "${workspaceFolder}/lesson03-express/node_modules/**",
       ]
+    },
+    {
+      "name": "debug lesson04-express-sqlite",
+      "type": "node",
+      "request": "launch",
+      // Debug current file in VSCode
+      "program": "${workspaceFolder}/lesson04-express-sqlite/src/app.ts",
+      /*
+       * Path to tsx binary
+       * Assuming locally installed
+       */
+      "runtimeExecutable": "tsx",
+      "cwd": "${workspaceFolder}/lesson04-express-sqlite",
+      /*
+       * Open terminal when debugging starts (Optional)
+       * Useful to see console.logs
+       */
+      "console": "integratedTerminal",
+      "internalConsoleOptions": "neverOpen",
+      // Files to exclude from debugger (e.g. call stack)
+      "skipFiles": [
+        // Node.js internal core modules
+        "<node_internals>/**",
+        // Ignore all dependencies (optional)
+        // "${workspaceFolder}/lesson03-express/node_modules/**",
+      ]
     }
   ],
 }
