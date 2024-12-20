@@ -1,6 +1,6 @@
-#Проект з прикладом express сервера з MongoDB
+# Проект з прикладом express сервера з MongoDB
 
-##Опис файлів:
+## Опис файлів:
 /config
 * custom-environment-variables.yml - mapping of ENV variables to config properties
 * default.json - default config for any environments
@@ -22,7 +22,7 @@
 
 * app.ts  - main express application file
 
-##How to start:
+## How to start:
   copy ".env.example" to ".env"
   fill in .env value for DATABASE_URL="mongodb+srv://..."
 
