@@ -1,0 +1,12 @@
+{
+  "name": "lesson05-for-await-streams",
+  "version": "1.0.0",
+  "description": "streams for await demo",
+  "main": "streams.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Dmytro Partsyrnyi",
+  "license": "MIT"
+}
