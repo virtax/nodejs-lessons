@@ -2,7 +2,7 @@ import config from "config";
 import "dotenv/config";
 import express, { Request, Response, NextFunction } from "express";
 import httpLogger from "./middleware/httpLogger";
-import usersRouter from "./routes/usersRouter";
+import userRouter from "./routes/userRouter";
 import { databaseService } from "./services/DatabaseService";
 import logger from "./utils/logger"
 const { log, warn, error } = logger("app");
@@ -21,8 +21,8 @@ app.get("/", (req: Request, res: Response) => {
   res.send("Hello, World!");
 });
 
-// Use the usersRouter and set the base path to /api/v1/users
-app.use("/api/v1/users", usersRouter);
+// Use the userRouter and set the base path to /api/v1/users
+app.use("/api/v1/users", userRouter);
 
 // Global error handler
 app.use((err, req: Request, res: Response, next: NextFunction) => {

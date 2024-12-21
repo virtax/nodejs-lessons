@@ -1,13 +1,13 @@
 import { Router, Request, Response } from "express";
-import { usersService } from "../services/UsersService";
+import { userService } from "../services/UserService";
 
-const usersRouter = Router();
+const userRouter = Router();
 
 // *** CREATE: Add a new user ***
-usersRouter.post("/", async (req: Request, res: Response) => {
+userRouter.post("/", async (req: Request, res: Response) => {
   const { name, email, age } = req.body;
   try {
-    const user = await usersService.createUser({ name, email, age });
+    const user = await userService.createUser({ name, email, age });
     res.status(201).json(user);
   } catch (err) {
     res.status(500).json({ error: err.message });
@@ -15,7 +15,7 @@ usersRouter.post("/", async (req: Request, res: Response) => {
 });
 
 // *** READ: Get users with age > 49 ***
-usersRouter.get("/old-users", async (req: Request, res: Response) => {
+userRouter.get("/old-users", async (req: Request, res: Response) => {
   try {
     // example of complex filter
     const filter = {
@@ -23,7 +23,7 @@ usersRouter.get("/old-users", async (req: Request, res: Response) => {
         $gt: 49
       }
     }
-    const users = await usersService.getAllUsers(filter);
+    const users = await userService.getAllUsers(filter);
     res.json(users);
   } catch (err) {
     res.status(500).json({ error: err.message });
@@ -31,9 +31,9 @@ usersRouter.get("/old-users", async (req: Request, res: Response) => {
 });
 
 // *** READ: Get all users ***
-usersRouter.get("/", async (req: Request, res: Response) => {
+userRouter.get("/", async (req: Request, res: Response) => {
   try {
-    const users = await usersService.getAllUsers(req.query);
+    const users = await userService.getAllUsers(req.query);
     res.json(users);
   } catch (err) {
     res.status(500).json({ error: err.message });
@@ -41,10 +41,10 @@ usersRouter.get("/", async (req: Request, res: Response) => {
 });
 
 // *** READ: Get a user by ID ***
-usersRouter.get("/:id", async (req: Request, res: Response) => {
+userRouter.get("/:id", async (req: Request, res: Response) => {
   const { id } = req.params;
   try {
-    const user = await usersService.getUserById(id);
+    const user = await userService.getUserById(id);
     if (!user) {
       res.status(404).json({ error: "User not found" });
       return;
@@ -56,11 +56,11 @@ usersRouter.get("/:id", async (req: Request, res: Response) => {
 });
 
 // *** UPDATE: Update a user by ID ***
-usersRouter.put("/:id", async (req: Request, res: Response) => {
+userRouter.put("/:id", async (req: Request, res: Response) => {
   const { id } = req.params;
   const { name, email, age } = req.body;
   try {
-    const user = await usersService.updateUser(id, { name, email, age});
+    const user = await userService.updateUser(id, { name, email, age});
     res.json(user);
   } catch (err) {
     res.status(500).json({ error: err.message });
@@ -68,14 +68,14 @@ usersRouter.put("/:id", async (req: Request, res: Response) => {
 });
 
 // *** DELETE: Delete a user by ID ***
-usersRouter.delete("/:id", async (req: Request, res: Response) => {
+userRouter.delete("/:id", async (req: Request, res: Response) => {
   const { id } = req.params;
   try {
-    const message = await usersService.deleteUser(id);
+    const message = await userService.deleteUser(id);
     res.json(message);
   } catch (err) {
     res.status(500).json({ error: err.message });
   }
 });
 
-export default usersRouter;
+export default userRouter;

@@ -13,10 +13,10 @@
   /middleware
   * httpLogger - example of custom http logger
   /routes
-  * usersRouter.ts - router for CRUD for /api/v1/users
+  * userRouter.ts - router for CRUD for /api/v1/users
   /services
   * DatabaseService.ts - service for connect/disconnect to mongo db database
-  * UsersService - service for CRUD for users collection
+  * UserService - service for CRUD for users collection
   /utils
   * logger.ts - логгер
 

@@ -1,7 +1,7 @@
 import { Db, ObjectId, WithId } from "mongodb";
 import { db } from "./DatabaseService";
 
-export class UsersService {
+export class UserService {
   private db: Db;
 
   constructor(db: Db) {
@@ -41,4 +41,4 @@ export class UsersService {
   }
 }
 
-export const usersService = new UsersService(db);
+export const userService = new UserService(db);
