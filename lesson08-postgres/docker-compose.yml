@@ -1,6 +1,6 @@
 version: '3'
-volumes:
-  db:
+# volumes:
+#   db:
 
 services:
   node-server:
@@ -27,10 +27,10 @@ services:
 
     env_file:
       - .env
-    environment:
-      PGDATA: /data/postgres
-    volumes:
-      - db:/data/postgres
+    # environment:
+    #   PGDATA: /data/postgres
+    # volumes:
+    #   - db:/data/postgres
     ports:
       - 5332:5432
     user: postgres
