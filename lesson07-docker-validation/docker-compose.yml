@@ -19,7 +19,7 @@ services:
     image: mongodb/mongodb-community-server:6.0-ubi8
     env_file:
       - .env
-    volumes:
-      - type: bind
-        source: ./data
-        target: /data/db
+    # volumes:
+    #   - type: bind
+    #     source: ./data
+    #     target: /data/db
