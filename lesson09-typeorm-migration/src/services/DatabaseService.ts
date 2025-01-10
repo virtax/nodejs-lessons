@@ -29,3 +29,8 @@ export class DatabaseService {
 }
 export const databaseService = new DatabaseService();
 const db = await databaseService.connect();
+
+// run migrations on start
+// await appDataSource.runMigrations({
+//   transaction: 'all',
+// });

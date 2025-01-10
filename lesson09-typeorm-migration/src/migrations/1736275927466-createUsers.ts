@@ -14,14 +14,13 @@ export class CreateUsers1736275927466 implements MigrationInterface {
          primary key (id)
         )
         `,
-      )
+      );
+      await queryRunner.query(`CREATE INDEX "IDX_51b8b26ac168fbe7d6f5653e6c" ON "users" ("name") `);
     }
 
     public async down(queryRunner: QueryRunner): Promise<void> {
-      await queryRunner.query(
-        `DROP TABLE "users"`,
-      )
+      await queryRunner.query(`DROP INDEX "public"."IDX_51b8b26ac168fbe7d6f5653e6c"`);
+      await queryRunner.query(`DROP TABLE "users"`)
     }
-
 
 }

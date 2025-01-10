@@ -41,6 +41,17 @@ userRouter.get("/old-users", async (req: Request, res: Response) => {
   }
 });
 
+
+// *** READ: Get users with sales ***
+userRouter.get("/sales", async (req: Request, res: Response) => {
+  try {
+    const users = await userService.getUsersWithSales();
+    res.json(users);
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
+
 // *** READ: Get all users ***
 userRouter.get("/", async (req: Request, res: Response) => {
   try {

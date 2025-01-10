@@ -1,4 +1,4 @@
-import { Entity, Column, PrimaryGeneratedColumn, OneToMany, Relation } from "typeorm"
+import { Entity, Column, PrimaryGeneratedColumn, OneToMany, Relation, Index } from "typeorm"
 import { Sale } from "./Sale"
 
 
@@ -7,6 +7,7 @@ export class User {
     @PrimaryGeneratedColumn("increment")
     id: number
 
+    @Index()
     @Column("text")
     name: string
 

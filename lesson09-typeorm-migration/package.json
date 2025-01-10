@@ -10,7 +10,8 @@
     "start:test": "NODE_ENV=test tsx ./src/app.ts",
     "test": "echo \"Error: no test specified\" && exit 1",
     "typeorm-ts-node": "typeorm-ts-node-esm -d ./src/services/appDataSource.ts",
-    "typeorm": "tsx ./node_modules/typeorm/cli.js -d ./src/services/appDataSource.ts"
+    "typeorm": "tsx ./node_modules/typeorm/cli.js -d ./src/services/appDataSource.ts",
+    "docker:typeorm": "docker-compose exec node-server npm run typeorm"
   },
   "author": "Dmytro Partsyrnyi",
   "license": "MIT",

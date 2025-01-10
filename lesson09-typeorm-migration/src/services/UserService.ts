@@ -1,6 +1,7 @@
 import { Repository } from "typeorm";
 import { User } from "../models/User";
 import { appDataSource } from "./appDataSource";
+import { Sale } from "../models/Sale";
 
 export class UserService {
 
@@ -13,6 +14,16 @@ export class UserService {
   // Method to get all users
   async getAllUsers(filters: Record<string, any> = {}) {
     return this.repository.find(filters);
+  }
+
+
+  // Method to get all users
+  async getUsersWithSales() {
+    return appDataSource.manager.find(Sale, {
+      relations: {
+        user: true
+      }
+    })
   }
 
   // Method to get a user by ID

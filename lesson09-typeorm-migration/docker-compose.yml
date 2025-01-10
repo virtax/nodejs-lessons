@@ -27,7 +27,7 @@ services:
     env_file:
       - .env
     ports:
-      - 5332:5432
+      - 5432:5432
     user: postgres
     healthcheck:
       test: [ "CMD-SHELL", "pg_isready -d postgres" ]
