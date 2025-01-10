@@ -130,3 +130,4 @@ dist
 .pnp.*
 lesson03/data/
 lesson04-express-sqlite/db/database.db
+lesson10-auth-bcrypt-session/sessions

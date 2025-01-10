@@ -1,6 +1,13 @@
 {
   "configurations": [
     {
+      "type": "node",
+      "request": "launch",
+      "name": "debug lesson10-auth-bcrypt",
+      "runtimeVersion": "20",
+      "program": "${workspaceFolder}/lesson10-auth-bcrypt/server.js",
+    },
+    {
       "name": "debug lesson03",
       "type": "node",
       "request": "launch",
