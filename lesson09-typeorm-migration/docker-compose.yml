@@ -1,5 +1,8 @@
 version: '3'
 
+volumes:
+  postgres-db:
+
 services:
   node-server:
     container_name: node-server
@@ -26,6 +29,8 @@ services:
     shm_size: 128mb
     env_file:
       - .env
+    volumes:
+      - postgres-db:/var/lib/postgresql/data
     ports:
       - 5432:5432
     user: postgres
