@@ -1,4 +1,6 @@
 version: '3'
+volumes:
+  mongo-db:
 services:
   node-server:
     build:
@@ -19,7 +21,7 @@ services:
     image: mongodb/mongodb-community-server:6.0-ubi8
     env_file:
       - .env
-    # volumes:
-    #   - type: bind
-    #     source: ./data
-    #     target: /data/db
+    volumes:
+      - type: volume
+        source: mongo-db
+        target: /data/db
