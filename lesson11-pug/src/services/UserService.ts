@@ -13,13 +13,13 @@ export class UserService {
 
   // Method to get all users
   async getAllUsers(filters: Record<string, any> = {}) {
-    return this.repository.find(filters);
+    return await this.repository.find(filters);
   }
 
 
   // Method to get all users
   async getUsersWithSales() {
-    return appDataSource.manager.find(Sale, {
+    return await appDataSource.manager.find(Sale, {
       relations: {
         user: true
       }
@@ -28,12 +28,22 @@ export class UserService {
 
   // Method to get a user by ID
   async getUserById(id: string) {
-    return this.repository.findOneById(id);
+    return await this.repository.findOneById(id);
   }
 
   // Method to get a user by where filter
   async getUserBy(where: FindOptionsWhere<User>) {
-    return this.repository.findOneBy(where);
+    return await this.repository.findOneBy(where);
+  }
+
+  // Method to get a user by with sales
+  async getUserWithSales(where: FindOptionsWhere<User>) {
+    return await this.repository.findOne({
+      where,
+      relations: {
+        sales: true,
+      }
+    })
   }
 
   // Method to create a new user
@@ -43,24 +53,31 @@ export class UserService {
     user.email = data.email;
     user.age = data.age;
     user.passwordHash = data.passwordHash;
-    return this.repository.save(user);
+    return await this.repository.save(user);
   }
 
   // Method to update a user
-  async updateUser(id: string, data: { name?: string; email?: string; age: number }) {
+  async updateUser(id: number, data: { name?: string; email?: string; age: number; salary?: number }) {
     const user = await this.repository.findOneById(id);
     if (!user) {
       throw new Error(`User with id ${id} not found!`)
     }
-    user.name = data.name;
-    user.email = data.email;
+    if (data.name) {
+      user.name = data.name;
+    }
+    if (data.email) {
+      user.email = data.email;
+    }
     user.age = data.age;
+    if (data.salary) {
+      user.salary = data.salary;
+    }
     await this.repository.save(user);
   }
 
   // Method to delete a user
   async deleteUser(id: string) {
-    return this.repository.delete(id);
+    return await this.repository.delete(id);
   }
 }
 

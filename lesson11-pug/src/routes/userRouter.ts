@@ -82,7 +82,7 @@ userRouter.put("/:id", async (req: Request, res: Response) => {
   const { id } = req.params;
   const { name, email, age } = req.body;
   try {
-    const user = await userService.updateUser(id, { name, email, age});
+    const user = await userService.updateUser(+id, { name, email, age});
     res.json(user);
   } catch (err) {
     res.status(500).json({ error: err.message });

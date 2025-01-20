@@ -4,8 +4,9 @@ html(lang="en")
     meta(charset="utf-8")
     meta(name="viewport", content="width=device-width, initial-scale=1")
     meta(name="color-scheme", content="light dark")
-    link(rel="stylesheet", href="https://unpkg.com/@picocss/pico@latest/css/pico.classless.min.css")
+    link(rel="stylesheet", href="css/pico.classless.min.css")
     title=title
-  body
+  body(style="min-height: 100vh;")
     main.container
       h1=message
+    include includes/footer.pug

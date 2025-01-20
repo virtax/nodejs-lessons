@@ -7,14 +7,18 @@ html(lang="en")
     link(rel="stylesheet", href="css/pico.classless.min.css")
     title=title
   body
+    include includes/header.pug
     main.container(style="max-width: 400px")
-      h2 Register new user
+      h2 User profile
       form(method="post")
-        label Email
-        input(name="email", type="email")
-        label Password
-        input(name="password", type="password")
-        button(type="submit") Register
+        label Name
+        input(name="name", type="text", value=name)
+        label Age
+        input(name="age", type="number", value=age)
+        label Salary
+        input(name="salary", type="number", value=salary)
+
+        button(type="submit") Save
 
     include includes/footer.pug
 

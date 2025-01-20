@@ -106,6 +106,15 @@
       "port": 9229,
       "localRoot": "${workspaceFolder}/lesson11-pug",
       "remoteRoot": "/home/node/app",
+    },
+    {
+      "type": "node",
+      "request": "attach",
+      "name": "Attach to lesson11-pug-worked docker",
+      "address": "localhost",
+      "port": 9229,
+      "localRoot": "${workspaceFolder}/lesson11-pug-worked",
+      "remoteRoot": "/home/node/app",
     }
   ],
 }
