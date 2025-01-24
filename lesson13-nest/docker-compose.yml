@@ -16,9 +16,10 @@ services:
     depends_on:
       - db
     volumes:
-      - type: bind
-        source: ./src
-        target: /home/node/app/src
+      - ./src:/home/node/app/src
+      - ./views:/home/node/app/views
+      - ./public:/home/node/app/public
+
     command: npm run start:dev
 
   db:

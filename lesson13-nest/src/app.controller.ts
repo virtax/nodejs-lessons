@@ -7,10 +7,10 @@ export class AppController {
 
   @Get()
   @Render('index')
-  getHello(): object {
-    return {
-      message: 'Hi!',
-    };
-    //return this.appService.getHello();
+  getHello(): string {
+    // return {
+    //   message: 'Hi!',
+    // };
+    return this.appService.getHello();
   }
 }
