@@ -1,0 +1,29 @@
+version: '3.8'
+services:
+  nats:
+    image: nats:latest
+    container_name: nats
+    ports:
+      - "4222:4222"
+
+  gateway:
+    build: ./gateway
+    container_name: gateway
+    ports:
+      - "3000:3000"
+    depends_on:
+      - nats
+    environment:
+      - NATS_URL=nats://nats:4222
+    volumes:
+      - ./gateway/src:/home/node/app/src
+
+  worker:
+    build: ./worker
+    container_name: worker
+    depends_on:
+      - nats
+    environment:
+      - NATS_URL=nats://nats:4222
+    volumes:
+      - ./worker/src:/home/node/app/src
