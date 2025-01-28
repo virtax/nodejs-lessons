@@ -19,6 +19,7 @@ services:
       - ./src:/home/node/app/src
       - ./views:/home/node/app/views
       - ./public:/home/node/app/public
+      - ./test:/home/node/app/test
 
     command: npm run start:dev
 

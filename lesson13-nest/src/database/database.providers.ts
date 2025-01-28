@@ -1,5 +1,10 @@
 import { DataSource } from 'typeorm';
 
+const url =
+  process.env['NODE_ENV'] == 'test'
+    ? process.env['TEST_DATABASE_URL']
+    : process.env['DATABASE_URL'];
+
 export const databaseProviders = [
   {
     provide: 'DATA_SOURCE',
@@ -7,7 +12,7 @@ export const databaseProviders = [
       const dataSource = new DataSource({
         type: 'postgres',
         port: 5432,
-        url: process.env['DATABASE_URL'],
+        url,
         entities: [__dirname + '/../**/*.entity{.ts,.js}'],
         synchronize: true,
       });
