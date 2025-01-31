@@ -1,0 +1,26 @@
+# "org" ensures this Service is used with the correct Serverless Framework Access Key.
+org: virtax
+# "app" enables Serverless Framework Dashboard features and sharing them with other Services.
+app: lambdahelloapp
+service: lambdaHelloApp
+
+provider:
+  name: aws
+  runtime: nodejs18.x
+  region: us-east-1
+
+functions:
+  hello:
+    handler: handler.hello
+    events:
+      - http:
+          path: hello
+          method: get
+
+  goodbye:
+    handler: handler.goodbye
+    events:
+      - http:
+          path: goodbye
+          method: get
+
